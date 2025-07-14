@@ -31,6 +31,7 @@ public class movPlayer : MonoBehaviour
 
     void Update()
     {
+
         //movimentacao horizontal
         moveInput = Input.GetAxisRaw("Horizontal");
         rbPlayer.linearVelocity = new Vector2(moveInput * speed, rbPlayer.linearVelocity.y);
@@ -62,7 +63,15 @@ public class movPlayer : MonoBehaviour
             pulosRestantes--;
             animatorPlayer.SetTrigger("Jump");
         }
-        
+
+        if (pulosRestantes == quantPulos)
+        {
+            animatorPlayer.SetBool("NoChao", true);
+        }
+        else
+        {
+            animatorPlayer.SetBool("NoChao", false);
+        }
         
         animatorPlayer.SetFloat("V", MathF.Abs(moveInput));
         animatorPlayer.SetFloat("Vy", rbPlayer.linearVelocity.y);
@@ -74,11 +83,6 @@ public class movPlayer : MonoBehaviour
         if (((1 << collision.gameObject.layer) & groundLayer) != 0)
         {
             pulosRestantes = quantPulos;
-            animatorPlayer.SetBool("NoChao", true);
-        }
-        else
-        {
-            animatorPlayer.SetBool("NoChao", false);
         }
     }
     void Flip(float direcao)
