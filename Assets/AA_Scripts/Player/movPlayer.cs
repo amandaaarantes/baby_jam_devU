@@ -12,7 +12,7 @@ public class movPlayer : MonoBehaviour
     private int pulosRestantes;
     private float moveInput; // movimentação horizontal
 
-    public Rigidbody2D rbPlayer;
+    private Rigidbody2D rbPlayer;
     private Animator animatorPlayer;
 
     [Header("Verificação do chão")]
