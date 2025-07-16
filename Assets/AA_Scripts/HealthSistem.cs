@@ -16,7 +16,6 @@ public class HealthSistem : MonoBehaviour
     void Start()
     {
         vidaAtual = vidaMaxima;
-        anim.SetBool("Morreu", false);
     }
 
     public void TakeDamage(int quant)
@@ -34,16 +33,16 @@ public class HealthSistem : MonoBehaviour
             if (vidaAtual <= 0)
             {
                 Debug.Log("Morreu!!!");
-            if (CompareTag("Player"))
-            {
-                Debug.Log("Logica de morte do jogador");
-            }
-            else
-            {
-                anim.SetBool("Morreu", true);
-                calma();
-                Destroy(gameObject);
-                Debug.Log("Ser foi destruído!");
+                if (CompareTag("Player"))
+                {
+                    Debug.Log("Logica de morte do jogador");
+                }
+                else
+                {
+                    anim.SetTrigger("Morreu");
+                    StartCoroutine(calma());
+                    
+                
             }
             }
             else
@@ -62,8 +61,11 @@ public class HealthSistem : MonoBehaviour
         estaInvencivel = false;
         
     }
-    IEnumerator calma()
+    public IEnumerator calma()
     {
-         yield return new WaitForSecondsRealtime(3);
+        yield return new WaitForSecondsRealtime(3);
+        Destroy(gameObject);
+        Debug.Log("Ser foi destruído!");
+        
     }
 }

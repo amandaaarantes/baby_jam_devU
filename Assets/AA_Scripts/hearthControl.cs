@@ -33,13 +33,11 @@ public class hearthControl : MonoBehaviour
         // para inicializar corretamente
 
 
-        for (int i = 0; i < vMax; i++)
+        for (int i = 0; i < 3; i++)
         {
-            GameObject prefab = (i < vAtual) ? hearthFull : hearthEmpty;
+            GameObject prefab = (i < vAtual && i%2 != 0) ? hearthFull : (i < vAtual && i%2 == 0) ? hearthMiddle : hearthEmpty;
                 GameObject coracao = Instantiate(prefab, heartParent);
-                coracoes.Add(coracao);
-                Debug.Log("i daqui:" + i + "prefab selecionado:" + prefab);
-            
+                coracoes.Add(coracao);   
         }
     }
 }
