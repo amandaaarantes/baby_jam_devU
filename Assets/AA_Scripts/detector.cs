@@ -6,8 +6,8 @@ public class detector : MonoBehaviour
     public movEnemy inimigo;
 
     [Header("Configuração do Detector")]
-    public bool isFront;  // Ativa o OnTriggerEnter2D
-    public bool isFoot;   // Ativa o OnTriggerExit2D
+    public bool isFront;
+    public bool isFoot; 
 
     [Header("Layer que o detector considera como chão/parede")]
     public LayerMask groundLayer;
@@ -28,7 +28,6 @@ public class detector : MonoBehaviour
         }
     }
 
-    // Função utilitária para verificar se o objeto está na LayerMask
     private bool IsInLayerMask(int layer, LayerMask layerMask)
     {
         return ((1 << layer) & layerMask) != 0;

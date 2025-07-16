@@ -18,8 +18,10 @@ public class movPlayer : MonoBehaviour
     [Header("Verificação do chão")]
     public Transform groundCheck; // "pé" do jogador
     public float groundCheckRadius = 0.2f;
-    public LayerMask groundLayer; // seleciona a camada do chão
 
+    [Header("Camadas necessárias:")]
+    public LayerMask groundLayer; // seleciona a camada do chão
+    public LayerMask thornsLayer; // camada dos espinhos
     
 
     void Start()
@@ -46,15 +48,6 @@ public class movPlayer : MonoBehaviour
             animatorPlayer.SetBool("Run", false);
         }
 
-
-        /* isGrounded = Physics2D.OverlapCircle(groundCheck.position, groundCheckRadius, groundLayer);
-
-         if (isGrounded)
-         {
-             pulosRestantes = quantPulos; // reseta os pulos
-             Debug.Log("Esta no chao agr!");
-
-         }*/
 
         //movimentacao vertical
         if (Input.GetButtonDown("Jump") && pulosRestantes > 0)
@@ -83,6 +76,14 @@ public class movPlayer : MonoBehaviour
         if (((1 << collision.gameObject.layer) & groundLayer) != 0)
         {
             pulosRestantes = quantPulos;
+        }
+    }
+
+    void OCollisionEnter2D(Collision2D collision)
+    {
+        if (((1 << collision.gameObject.layer) & thornsLayer) != 0)
+        {
+            // chamar funcao de reespawn do jogador
         }
     }
     void Flip(float direcao)

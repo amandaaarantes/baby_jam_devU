@@ -35,7 +35,7 @@ public class hearthControl : MonoBehaviour
 
         for (int i = 0; i < 3; i++)
         {
-            GameObject prefab = (i < vAtual && i%2 != 0) ? hearthFull : (i < vAtual && i%2 == 0) ? hearthMiddle : hearthEmpty;
+            GameObject prefab = (vAtual >= (i+1)*2) ? hearthFull : (vAtual == (i*2)+1) ? hearthMiddle : hearthEmpty;
                 GameObject coracao = Instantiate(prefab, heartParent);
                 coracoes.Add(coracao);   
         }

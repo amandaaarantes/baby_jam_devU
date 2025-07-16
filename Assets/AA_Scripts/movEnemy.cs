@@ -5,9 +5,8 @@ public class movEnemy : MonoBehaviour
     private Rigidbody2D enemyRb;
     public float moveSpeed = 2f;
 
-    public BoxCollider2D pe;      // Colisor do pé (verifica se tem chão à frente)
-    public BoxCollider2D frente;  // Colisor da frente (verifica colisão com o que vem pela frente)
-
+    public BoxCollider2D pe;
+    public BoxCollider2D frente;  
     private Vector2 moveDirection = Vector2.right;
 
     public Vector2 DirecaoMovimento => moveDirection;
