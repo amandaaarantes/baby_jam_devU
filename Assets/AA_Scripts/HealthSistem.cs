@@ -8,12 +8,15 @@ public class HealthSistem : MonoBehaviour
     public int vidaAtual;
     public int vidaMaxima = 6;
     public float invencibilidade; // tempo q o gameObject n pode levar dano
-    private bool estaInvencivel = false;
+    public bool estaInvencivel = false;
+    // public Animator an;
 
     public hearthControl coracoes;
+    public Animator anim;
     void Start()
     {
         vidaAtual = vidaMaxima;
+        anim.SetBool("Morreu", false);
     }
 
     public void TakeDamage(int quant)
@@ -25,21 +28,23 @@ public class HealthSistem : MonoBehaviour
 
             if (CompareTag("Player") && coracoes != null)
             {
-                coracoes.atualizarCoracoes();
+                coracoes.AtualizarCoracoes();
             }
 
             if (vidaAtual <= 0)
             {
                 Debug.Log("Morreu!!!");
-                if (CompareTag("Player"))
-                {
-                    Debug.Log("Logica de morte do jogador");
-                }
-                else
-                {
-                    Destroy(gameObject);
-                    Debug.Log("Ser foi destruído!");
-                }
+            if (CompareTag("Player"))
+            {
+                Debug.Log("Logica de morte do jogador");
+            }
+            else
+            {
+                anim.SetBool("Morreu", true);
+                calma();
+                Destroy(gameObject);
+                Debug.Log("Ser foi destruído!");
+            }
             }
             else
             {
@@ -50,11 +55,15 @@ public class HealthSistem : MonoBehaviour
 
     }
 
-    private IEnumerator cooldownInvencibilidade()
+    public IEnumerator cooldownInvencibilidade()
     {
         estaInvencivel = true;
         yield return new WaitForSecondsRealtime(invencibilidade);
         estaInvencivel = false;
         
+    }
+    IEnumerator calma()
+    {
+         yield return new WaitForSecondsRealtime(3);
     }
 }
