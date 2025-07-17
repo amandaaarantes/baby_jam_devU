@@ -13,7 +13,7 @@ TagManager:
   - Water
   - UI
   - Enemy
-  - 
+  - Thorns
   - 
   - 
   - 
@@ -41,6 +41,21 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: tree
+    uniqueID: 3448385043
+    locked: 0
+  - name: thorns
+    uniqueID: 45495679
+    locked: 0
+  - name: ground
+    uniqueID: 1365390705
+    locked: 0
+  - name: others
+    uniqueID: 3893034141
+    locked: 0
+  - name: border
+    uniqueID: 3527238921
     locked: 0
   m_RenderingLayers:
   - Default

@@ -36,6 +36,7 @@ public class HealthSistem : MonoBehaviour
                 if (CompareTag("Player"))
                 {
                     Debug.Log("Logica de morte do jogador");
+                    SceneManager.LoadScene(SceneManager.GetActiveScene().name); // reinicia a cena
                 }
                 else
                 {

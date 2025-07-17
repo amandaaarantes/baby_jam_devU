@@ -2,6 +2,7 @@ using System;
 using Unity.VisualScripting;
 using UnityEditor.Tilemaps;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class movPlayer : MonoBehaviour
 {
@@ -77,15 +78,12 @@ public class movPlayer : MonoBehaviour
         {
             pulosRestantes = quantPulos;
         }
-    }
-
-    void OCollisionEnter2D(Collision2D collision)
-    {
-        if (((1 << collision.gameObject.layer) & thornsLayer) != 0)
+        else if (((1 << collision.gameObject.layer) & thornsLayer) != 0)
         {
-            // chamar funcao de reespawn do jogador
+            SceneManager.LoadScene(SceneManager.GetActiveScene().name); // reinicia a cena
         }
     }
+
     void Flip(float direcao)
     {
         transform.localScale = new Vector3(MathF.Sign(direcao), 1f, 1f);
