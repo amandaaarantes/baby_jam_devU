@@ -8,6 +8,7 @@ public class coletaveis : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Player"))
         {
+
             Destroy(gameObject);
         }
     }
