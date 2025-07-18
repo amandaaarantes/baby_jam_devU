@@ -83,8 +83,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: 254129145
+  m_SortingLayer: 3
   m_SortingOrder: 0
   m_Sprite: {fileID: 4723107735738678597, guid: b19e082f443f0854b9339bd45d97a6e3, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -199,17 +199,17 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2061346136782227111}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 743e074a662cd0047bc25271e22ae7c2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 5
-  jumpForce: 5
+  speed: 10
+  jumpForce: 10
   quantPulos: 1
   rbPlayer: {fileID: 0}
-  pivotCam: {fileID: 0}
   groundCheck: {fileID: 6942225875428859228}
+  t: {fileID: 4779121185052358064}
   groundCheckRadius: 0.2
   groundLayer:
     serializedVersion: 2
@@ -234,7 +234,7 @@ MonoBehaviour:
   invencibilidade: 2
   estaInvencivel: 0
   coracoes: {fileID: 0}
-  anim: {fileID: 0}
+  anim: {fileID: 3411313476080707601}
 --- !u!114 &931665566680199678
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -253,7 +253,7 @@ MonoBehaviour:
   dano: 1
   zonaAtaque: {fileID: 5032539955842633969}
   raioAtaque: 1
-  cooldown: 1
+  cooldown: 1.5
 --- !u!1 &2384985829019132711
 GameObject:
   m_ObjectHideFlags: 0
@@ -391,7 +391,7 @@ Transform:
   m_GameObject: {fileID: 7053320640710370922}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -10}
+  m_LocalPosition: {x: 0, y: 2, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -407,7 +407,7 @@ Camera:
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 2
-  m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
+  m_BackGroundColor: {r: 0.4811321, g: 0.4811321, b: 0.4811321, a: 0}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0
@@ -432,7 +432,7 @@ Camera:
   far clip plane: 1000
   field of view: 34
   orthographic: 1
-  orthographic size: 5
+  orthographic size: 4
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -510,6 +510,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6942225875428859228}
   - component: {fileID: 1402691784170148500}
+  - component: {fileID: 450889026256100530}
   m_Layer: 0
   m_Name: pe
   m_TagString: Untagged
@@ -578,3 +579,28 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 0.67087173, y: 0.10783386}
   m_EdgeRadius: 0
+--- !u!114 &450889026256100530
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8552981064458460746}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 743e074a662cd0047bc25271e22ae7c2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 7
+  jumpForce: 7
+  quantPulos: 1
+  rbPlayer: {fileID: 7433182873361230417}
+  groundCheck: {fileID: 6942225875428859228}
+  t: {fileID: 4779121185052358064}
+  groundCheckRadius: 0.2
+  groundLayer:
+    serializedVersion: 2
+    m_Bits: 8
+  thornsLayer:
+    serializedVersion: 2
+    m_Bits: 128

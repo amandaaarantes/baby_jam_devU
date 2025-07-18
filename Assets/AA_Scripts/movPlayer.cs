@@ -31,6 +31,8 @@ public class movPlayer : MonoBehaviour
     {
         rbPlayer = GetComponentInParent<Rigidbody2D>();
         animatorPlayer = GetComponentInParent<Animator>();
+        t = GetComponentInParent<Transform>();
+        
         pulosRestantes = quantPulos;
     }
 
