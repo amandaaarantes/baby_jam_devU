@@ -28,20 +28,8 @@ public class ataquePertoEnemy : MonoBehaviour
     {
         if (collision.CompareTag("Player"))
         {
-            animatorEnemy.SetTrigger("Ataque");
-            HealthSistem hs = collision.GetComponentInParent<HealthSistem>();
-            if (hs != null)
-            {
-                hs.TakeDamage(dano);
-            }
-            //Knockback:
-            Rigidbody2D rb = collision.GetComponentInParent<Rigidbody2D>();
-            if (rb != null && movE != null && !tomaKnockback)
-            {
-                Vector2 direcao = movE.DirecaoMovimento.normalized;
-                Vector2 knockbackDir = new Vector2(direcao.x, 1f).normalized;
-                StartCoroutine(delayDoKnockback(rb, knockbackDir, knockbackDelay));
-            }
+            
+            StartCoroutine(Soco(collision));
 
         }
     }
@@ -55,19 +43,38 @@ public class ataquePertoEnemy : MonoBehaviour
 
     IEnumerator delayDoKnockback(Rigidbody2D rb, Vector2 knockbackDirecao, float tempo)
     {
-        
+
         rb.AddForce(knockbackDirecao * knockbackForce, ForceMode2D.Impulse);
         tomaKnockback = true;
         yield return new WaitForSecondsRealtime(tempo);
         tomaKnockback = false;
 
-        /*movPlayer mov = rb.GetComponent<movPlayer>();
+        movPlayer mov = rb.GetComponent<movPlayer>();
         if (mov != null)
         {
             mov.enabled = false;
             yield return new WaitForSecondsRealtime(tempo);
             mov.enabled = true;
-        }*/
+        }
+    }
+
+    IEnumerator Soco(Collider2D collision)
+    {
+        animatorEnemy.SetTrigger("Ataque");
+        yield return new WaitForSecondsRealtime(1.5f);
+        HealthSistem hs = collision.GetComponentInParent<HealthSistem>();
+        if (hs != null)
+        {
+            hs.TakeDamage(dano);
+        }
+            
+         Rigidbody2D rb = collision.GetComponentInParent<Rigidbody2D>();
+            if (rb != null && movE != null && !tomaKnockback)
+            {
+                Vector2 direcao = movE.DirecaoMovimento.normalized;
+                Vector2 knockbackDir = new Vector2(direcao.x, 1f).normalized;
+                StartCoroutine(delayDoKnockback(rb, knockbackDir, knockbackDelay));
+            }
     }
 }
 

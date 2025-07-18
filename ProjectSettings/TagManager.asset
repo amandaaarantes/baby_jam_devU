@@ -48,6 +48,9 @@ TagManager:
   - name: thorns
     uniqueID: 45495679
     locked: 0
+  - name: player e enemys
+    uniqueID: 254129145
+    locked: 0
   - name: ground
     uniqueID: 1365390705
     locked: 0
@@ -56,6 +59,9 @@ TagManager:
     locked: 0
   - name: border
     uniqueID: 3527238921
+    locked: 0
+  - name: UI
+    uniqueID: 3111378999
     locked: 0
   m_RenderingLayers:
   - Default

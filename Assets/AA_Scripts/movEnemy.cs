@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class movEnemy : MonoBehaviour
 {
-    private Rigidbody2D enemyRb;
+    public Rigidbody2D enemyRb;
     public float moveSpeed = 2f;
 
     public BoxCollider2D pe;
@@ -12,12 +12,12 @@ public class movEnemy : MonoBehaviour
     public Vector2 DirecaoMovimento => moveDirection;
 
 
-    private void Start()
+    public void Start()
     {
         enemyRb = GetComponent<Rigidbody2D>();
     }
 
-    private void FixedUpdate()
+    public void FixedUpdate()
     {
         enemyRb.linearVelocity = new Vector2(moveDirection.x * moveSpeed, enemyRb.linearVelocity.y);
     }

@@ -178,8 +178,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: 254129145
+  m_SortingLayer: 3
   m_SortingOrder: 0
   m_Sprite: {fileID: 6420840132591015083, guid: 8493d4866db92f644945bf72c5ebe6c9, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -277,7 +277,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0503b3ced4b7280489309dc31f5ee25a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 2
+  enemyRb: {fileID: 0}
+  moveSpeed: 0.5
   pe: {fileID: 174113624573321216}
   frente: {fileID: 6883604478207254019}
 --- !u!114 &8282914630186482503
@@ -467,7 +468,7 @@ MonoBehaviour:
   knockbackDelay: 0.5
   zonaDeAtaque: {fileID: 6954110237352872653}
   animatorEnemy: {fileID: 3746822538725498683}
-  raioDeAtaque: 3
+  raioDeAtaque: 1.5
   movE: {fileID: 1374084791821745709}
 --- !u!58 &2148989313710791216
 CircleCollider2D:
@@ -503,5 +504,5 @@ CircleCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0, y: -0.016217232}
-  m_Radius: 3.0039415
+  m_Offset: {x: 0, y: -0.020174742}
+  m_Radius: 1.48932

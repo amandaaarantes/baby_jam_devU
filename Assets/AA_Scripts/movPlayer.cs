@@ -13,11 +13,13 @@ public class movPlayer : MonoBehaviour
     private int pulosRestantes;
     private float moveInput; // movimentação horizontal
 
+    private bool isGrounded = false;
     public Rigidbody2D rbPlayer;
     private Animator animatorPlayer;
 
     [Header("Verificação do chão")]
     public Transform groundCheck; // "pé" do jogador
+    public Transform t;
     public float groundCheckRadius = 0.2f;
 
     [Header("Camadas necessárias:")]
@@ -27,8 +29,8 @@ public class movPlayer : MonoBehaviour
 
     void Start()
     {
-        rbPlayer = GetComponent<Rigidbody2D>();
-        animatorPlayer = GetComponent<Animator>();
+        rbPlayer = GetComponentInParent<Rigidbody2D>();
+        animatorPlayer = GetComponentInParent<Animator>();
         pulosRestantes = quantPulos;
     }
 
@@ -77,6 +79,7 @@ public class movPlayer : MonoBehaviour
         if (((1 << collision.gameObject.layer) & groundLayer) != 0)
         {
             pulosRestantes = quantPulos;
+            isGrounded = true;
         }
         else if (((1 << collision.gameObject.layer) & thornsLayer) != 0)
         {
@@ -86,7 +89,8 @@ public class movPlayer : MonoBehaviour
 
     void Flip(float direcao)
     {
-        transform.localScale = new Vector3(MathF.Sign(direcao), 1f, 1f);
+        t.localScale = new Vector3(MathF.Sign(direcao), 1f, 1f);
+    
     }
 
 

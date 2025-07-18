@@ -41,10 +41,10 @@ public class HealthSistem : MonoBehaviour
                 else
                 {
                     anim.SetTrigger("Morreu");
+                    movEnemy m = GetComponent<movEnemy>();
+                    m.enemyRb.linearVelocity = Vector2.zero;
                     StartCoroutine(calma());
-                    
-                
-            }
+                }
             }
             else
             {
@@ -64,7 +64,7 @@ public class HealthSistem : MonoBehaviour
     }
     public IEnumerator calma()
     {
-        yield return new WaitForSecondsRealtime(3);
+        yield return new WaitForSecondsRealtime(2.5f);
         Destroy(gameObject);
         Debug.Log("Ser foi destruído!");
         
