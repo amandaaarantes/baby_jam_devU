@@ -1,9 +1,9 @@
 using System.Collections;
+using System.Diagnostics;
 using UnityEngine;
 
 public class ataquePertoEnemy : MonoBehaviour
 {
-    public int dano;
 
     [Header("Knockback")]
     public float knockbackForce; //aplicada no player
@@ -12,15 +12,22 @@ public class ataquePertoEnemy : MonoBehaviour
     private bool tomaKnockback = false;
     public Transform zonaDeAtaque;
     public Animator animatorEnemy;
+    public GameObject hurtbox;
     public float raioDeAtaque;
     public movEnemy movE;
 
 
     void Start()
     {
-        if (movE == null)
+        Transform hurtboxTransform = transform.parent.Find("hurtbox");
+
+        if (hurtboxTransform != null)
         {
-            Debug.Log(" movEnemy não foi atribuído");
+            GameObject hurtbox = hurtboxTransform.gameObject;
+        }
+            if (movE == null)
+        {
+            UnityEngine.Debug.Log(" movEnemy não foi atribuído");
         }
     }
 
@@ -33,6 +40,7 @@ public class ataquePertoEnemy : MonoBehaviour
 
         }
     }
+
     private void OnDrawGizmos()
     {
         if (zonaDeAtaque != null)
@@ -43,7 +51,6 @@ public class ataquePertoEnemy : MonoBehaviour
 
     IEnumerator delayDoKnockback(Rigidbody2D rb, Vector2 knockbackDirecao, float tempo)
     {
-
         rb.AddForce(knockbackDirecao * knockbackForce, ForceMode2D.Impulse);
         tomaKnockback = true;
         yield return new WaitForSecondsRealtime(tempo);
@@ -60,22 +67,20 @@ public class ataquePertoEnemy : MonoBehaviour
 
     IEnumerator Soco(Collider2D collision)
     {
+        movE.moveSpeed = 0f;
         animatorEnemy.SetTrigger("Ataque");
         yield return new WaitForSecondsRealtime(1.5f);
-        HealthSistem hs = collision.GetComponentInParent<HealthSistem>();
-        if (hs != null)
-        {
-            hs.TakeDamage(dano);
-        }
             
-         Rigidbody2D rb = collision.GetComponentInParent<Rigidbody2D>();
-            if (rb != null && movE != null && !tomaKnockback)
-            {
-                Vector2 direcao = movE.DirecaoMovimento.normalized;
-                Vector2 knockbackDir = new Vector2(direcao.x, 1f).normalized;
-                StartCoroutine(delayDoKnockback(rb, knockbackDir, knockbackDelay));
-            }
+        Rigidbody2D rb = collision.GetComponentInParent<Rigidbody2D>();
+        if (rb != null && !tomaKnockback)
+        {
+            hurtbox.SetActive(true);
+            Vector2 direcao = movE.DirecaoMovimento.normalized;
+            Vector2 knockbackDir = new Vector2(direcao.x, 1f).normalized;
+            StartCoroutine(delayDoKnockback(rb, knockbackDir, knockbackDelay));
+            UnityEngine.Debug.Log("executei");
+        }
+        hurtbox.SetActive(false);
+        movE.moveSpeed = 0.5f;
     }
 }
-
-

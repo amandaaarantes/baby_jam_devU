@@ -13,7 +13,6 @@ public class movPlayer : MonoBehaviour
     private int pulosRestantes;
     private float moveInput; // movimentação horizontal
 
-    private bool isGrounded = false;
     public Rigidbody2D rbPlayer;
     private Animator animatorPlayer;
 
@@ -81,7 +80,6 @@ public class movPlayer : MonoBehaviour
         if (((1 << collision.gameObject.layer) & groundLayer) != 0)
         {
             pulosRestantes = quantPulos;
-            isGrounded = true;
         }
         else if (((1 << collision.gameObject.layer) & thornsLayer) != 0)
         {
