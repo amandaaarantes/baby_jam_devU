@@ -1,6 +1,7 @@
 using UnityEngine;
 using System.Collections;
 using UnityEngine.SceneManagement;
+using System.Runtime.InteropServices;
 
 public class HealthSistem : MonoBehaviour
 {
@@ -13,6 +14,7 @@ public class HealthSistem : MonoBehaviour
 
     public hearthControl coracoes;
     public Animator anim;
+
     void Start()
     {
         vidaAtual = vidaMaxima;
@@ -40,6 +42,10 @@ public class HealthSistem : MonoBehaviour
                 }
                 else
                 {
+                    var collision = GetComponent<BoxCollider2D>();
+                    var rb = GetComponent<Rigidbody2D>();
+                    rb.bodyType = RigidbodyType2D.Static;
+                    collision.enabled = false;
                     anim.SetTrigger("Morreu");
                     movEnemy m = GetComponent<movEnemy>();
                     m.enemyRb.linearVelocity = Vector2.zero;

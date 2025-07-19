@@ -10,6 +10,7 @@ public class ataquePertoEnemy : MonoBehaviour
     public GameObject hurtbox;
     public float raioDeAtaque;
     public movEnemy movE;
+    
 
     void Awake()
     {
@@ -66,7 +67,7 @@ public class ataquePertoEnemy : MonoBehaviour
             UnityEngine.Debug.Log("executei");
         }
         movE.moveSpeed = 0.5f;
-        yield return new WaitForSecondsRealtime(0.2f);
+        yield return new WaitForSecondsRealtime(0.1f);
         hurtbox.SetActive(false);
     }
 }
