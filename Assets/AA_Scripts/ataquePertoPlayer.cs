@@ -30,7 +30,7 @@ public class ataquePertoPlayer : MonoBehaviour
     void Update()
     {
 
-        if (Input.GetButtonDown("Fire1") && !estaAtacando && rbPlayer.linearVelocity.y == 0 && rbPlayer.linearVelocity.x == 0)
+        if (Input.GetButtonDown("Fire1") && !estaAtacando)
         {
             animatorPlayer.SetTrigger("Ataque");
             Atacar();

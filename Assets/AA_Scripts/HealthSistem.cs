@@ -1,6 +1,7 @@
 using UnityEngine;
 using System.Collections;
 using UnityEngine.SceneManagement;
+using System.Runtime.InteropServices;
 
 public class HealthSistem : MonoBehaviour
 {
@@ -13,7 +14,7 @@ public class HealthSistem : MonoBehaviour
 
     public hearthControl coracoes;
     public Animator anim;
-    // public FasesControler f;
+
     void Start()
     {
         vidaAtual = vidaMaxima;
@@ -41,9 +42,14 @@ public class HealthSistem : MonoBehaviour
                 }
                 else
                 {
+                    var collision = GetComponent<BoxCollider2D>();
+                    var rb = GetComponent<Rigidbody2D>();
+                    rb.bodyType = RigidbodyType2D.Static;
+                    collision.enabled = false;
                     anim.SetTrigger("Morreu");
+                    movEnemy m = GetComponent<movEnemy>();
+                    m.enemyRb.linearVelocity = Vector2.zero;
                     StartCoroutine(calma());
-                   // f.AtualizarInimigos(gameObject);
                 }
             }
             else
@@ -64,9 +70,6 @@ public class HealthSistem : MonoBehaviour
     }
     public IEnumerator calma()
     {
-        
-        movEnemy m = GetComponent<movEnemy>();
-        m.moveSpeed = 0f;
         yield return new WaitForSecondsRealtime(2.5f);
         Destroy(gameObject);
         Debug.Log("Ser foi destruído!");
