@@ -1,4 +1,5 @@
 using System.Collections;
+using NUnit.Framework.Constraints;
 using UnityEngine;
 
 public class ataquePertoEnemy : MonoBehaviour
@@ -10,6 +11,7 @@ public class ataquePertoEnemy : MonoBehaviour
     public float knockbackDelay;
 
     private bool tomaKnockback = false;
+    private bool ataqueLiberado = true;
     public Transform zonaDeAtaque;
     public Animator animatorEnemy;
     public float raioDeAtaque;
@@ -26,7 +28,7 @@ public class ataquePertoEnemy : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.CompareTag("Player"))
+        if (collision.CompareTag("Player") && ataqueLiberado)
         {
             
             StartCoroutine(Soco(collision));
@@ -61,20 +63,27 @@ public class ataquePertoEnemy : MonoBehaviour
     IEnumerator Soco(Collider2D collision)
     {
         animatorEnemy.SetTrigger("Ataque");
+        float temp;
+        temp = movE.moveSpeed;
+        movE.moveSpeed = 0f;
         yield return new WaitForSecondsRealtime(1.5f);
         HealthSistem hs = collision.GetComponentInParent<HealthSistem>();
         if (hs != null)
         {
             hs.TakeDamage(dano);
         }
-            
-         Rigidbody2D rb = collision.GetComponentInParent<Rigidbody2D>();
-            if (rb != null && movE != null && !tomaKnockback)
-            {
-                Vector2 direcao = movE.DirecaoMovimento.normalized;
-                Vector2 knockbackDir = new Vector2(direcao.x, 1f).normalized;
-                StartCoroutine(delayDoKnockback(rb, knockbackDir, knockbackDelay));
-            }
+
+        Rigidbody2D rb = collision.GetComponentInParent<Rigidbody2D>();
+        if (rb != null && movE != null && !tomaKnockback)
+        {
+            Vector2 direcao = movE.DirecaoMovimento.normalized;
+            Vector2 knockbackDir = new Vector2(direcao.x, 1f).normalized;
+            StartCoroutine(delayDoKnockback(rb, knockbackDir, knockbackDelay));
+        }
+        movE.moveSpeed = temp;
+        ataqueLiberado = false;
+        yield return new WaitForSecondsRealtime(2);
+        ataqueLiberado = true;
     }
 }
 

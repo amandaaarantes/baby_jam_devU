@@ -5,6 +5,7 @@ TagManager:
   serializedVersion: 3
   tags:
   - Enemy
+  - Saida
   layers:
   - Default
   - TransparentFX
@@ -14,7 +15,7 @@ TagManager:
   - UI
   - Enemy
   - Thorns
-  - 
+  - Saida
   - 
   - 
   - 
@@ -62,6 +63,9 @@ TagManager:
     locked: 0
   - name: UI
     uniqueID: 3111378999
+    locked: 0
+  - name: hearts
+    uniqueID: 2706699069
     locked: 0
   m_RenderingLayers:
   - Default
