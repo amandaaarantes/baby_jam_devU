@@ -7432,6 +7432,11 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 5.90366, y: 0.46833992}
   m_EdgeRadius: 0
+--- !u!1 &919922951 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4381649759862943222, guid: 891875d6fdb956f48b23015855a1a3a9, type: 3}
+  m_PrefabInstance: {fileID: 991357989476992854}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1135512223
 GameObject:
   m_ObjectHideFlags: 0
@@ -40084,6 +40089,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 754075513237448980, guid: 891875d6fdb956f48b23015855a1a3a9, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1155046295463096915, guid: 891875d6fdb956f48b23015855a1a3a9, type: 3}
       propertyPath: m_Name
       value: heavyEnemy
@@ -40104,6 +40113,18 @@ PrefabInstance:
       propertyPath: m_SortingLayerID
       value: -401933155
       objectReference: {fileID: 0}
+    - target: {fileID: 4381649759862943222, guid: 891875d6fdb956f48b23015855a1a3a9, type: 3}
+      propertyPath: m_Name
+      value: hurtbox
+      objectReference: {fileID: 0}
+    - target: {fileID: 4381649759862943222, guid: 891875d6fdb956f48b23015855a1a3a9, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7958166050943481064, guid: 891875d6fdb956f48b23015855a1a3a9, type: 3}
+      propertyPath: hurtbox
+      value: 
+      objectReference: {fileID: 919922951}
     - target: {fileID: 7958166050943481064, guid: 891875d6fdb956f48b23015855a1a3a9, type: 3}
       propertyPath: raioDeAtaque
       value: 1.5

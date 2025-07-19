@@ -3,6 +3,7 @@ using UnityEngine;
 public class DarDano : MonoBehaviour
 {
     public int dano;
+    
 
 
     void OnTriggerEnter2D(Collider2D collision)
@@ -14,7 +15,7 @@ public class DarDano : MonoBehaviour
             {
                 hs.TakeDamage(dano);
             }
-
+            
         }
     }
 }

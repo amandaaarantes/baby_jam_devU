@@ -556,11 +556,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 72d4e520c193fc54dad73d1f1012d5a1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  knockbackForce: 5
-  knockbackDelay: 0.5
   zonaDeAtaque: {fileID: 6954110237352872653}
   animatorEnemy: {fileID: 3746822538725498683}
-  hurtbox: {fileID: 0}
+  hurtbox: {fileID: 4381649759862943222}
   raioDeAtaque: 1.5
   movE: {fileID: 1374084791821745709}
 --- !u!58 &2148989313710791216
